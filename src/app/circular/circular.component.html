@@ -1,1 +1,19 @@
-<p>Map works</p>
+<div  class="wrapper">
+    <p *ngIf="!userLocationData && !errorMessage">Location is loading. Please wait!</p>
+    <div class="localWeather" *ngIf="userLocationData">
+        <h1>Location: {{userLocationData.name}}</h1>
+        <img src="https://openweathermap.org/img/wn/{{userLocationData.weather[0].icon}}@2x.png">
+        <p *ngIf="userLocationData.clouds.all">Clouds: {{userLocationData.clouds.all}}</p>
+        <p *ngIf="userLocationData.main.temp">Temperature: {{convertKtoF(userLocationData.main.temp)}} F</p>
+        <p *ngIf="userLocationData.main.temp_max">Max Temperature: {{convertKtoF(userLocationData.main.temp_max)}} F</p>
+        <p *ngIf="userLocationData.main.temp_min">Min Temperature: {{convertKtoF(userLocationData.main.temp_min)}} F</p>
+        <p *ngIf="userLocationData.sys.sunrise">Sunrise: {{convertTimeStampToDate(userLocationData.sys.sunrise)}}</p>
+        <p *ngIf="userLocationData.sys.sunset">Sunrise: {{convertTimeStampToDate(userLocationData.sys.sunset)}}</p>
+    </div>
+</div>
+
+
+
+<div class="localWeather" *ngIf="errorMessage">
+<p>{{errorMessage}}</p>
+</div>

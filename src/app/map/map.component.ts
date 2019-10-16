@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import { throwError } from 'rxjs';
+import { SharedService } from '../providers/shared/shared.service';
 
 @Component({
   selector: 'app-map',
@@ -10,12 +11,15 @@ import { throwError } from 'rxjs';
 })
 export class MapComponent implements OnInit {
   data: any;
-  constructor() { }
+  temp:any;
+  constructor(public _sharedService: SharedService) { }
 
   ngOnInit() {
     this.createMap();
   }
+
   createMap() {
+      var newThis = this; //this will allow us to use angular components inside d3
       const svg = d3.select('svg');
       const nameState = {};
       const path = d3.geoPath();
@@ -33,7 +37,7 @@ export class MapComponent implements OnInit {
             tsv.forEach(function(d, i) {
               names[d.id] = d.code;
               nameState[d.id] = d.name;
-              debugger
+              //debugger
             });
             svg.append('g')
             .attr('class', 'states')
@@ -42,10 +46,12 @@ export class MapComponent implements OnInit {
             .enter().append('path')
               .attr('d', path)
               .on('click', function(d, i) {
-                debugger;
+                //debugger;
                 d3.select(this).attr('class', 'tooltip-donut')
                 .style('opacity', 0.1);
-                alert(nameState[d.id]);
+                //alert(nameState[d.id]);
+                newThis.alertWithWeatherData(nameState[d.id]); //calling api 
+                console.log(nameState[d.id])
               })
               .on('mouseover', function(d, i) {
                 console.log(d.id);
@@ -70,6 +76,30 @@ export class MapComponent implements OnInit {
           throwError;
         });
 
+  }
+
+  alertWithWeatherData(state){
+    this._sharedService.getStateWeather(state).subscribe(res => {
+      console.log(res);
+      let message = "State: "+state+"\n"+
+                    "Temperature: "+(this.convertKtoF(res["main"].temp))+" F\n"+
+                    "Max Temperature: "+ (this.convertKtoF(res["main"].temp_max))+" F\n"+
+                    "Min Temperature: "+ (this.convertKtoF(res["main"].temp_min))+" F\n"+
+                    "Sunrise: "+ (this.convertTimeStampToDate(res["sys"].sunrise))+"\n"+
+                    "Sunset: "+ (this.convertTimeStampToDate(res["sys"].sunset))+"\n"
+                    ;
+      window.alert(message);
+    }, error => {
+      window.alert('Not found! Please try again later');
+    });
+  }
+
+  convertKtoF(K){
+    return (((K-273.15)*1.8)+32).toFixed(2);
+  }
+
+  convertTimeStampToDate(timesStamp){
+    return new Date(timesStamp*1000).toLocaleTimeString();
   }
 
 }
