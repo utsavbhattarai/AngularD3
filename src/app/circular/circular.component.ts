@@ -44,5 +44,4 @@ export class CircularComponent implements OnInit {
   convertTimeStampToDate(timesStamp){
     return new Date(timesStamp*1000).toLocaleTimeString();
   }
-  
 }

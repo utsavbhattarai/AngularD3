@@ -1,4 +1,13 @@
 <app-circular></app-circular>
 <div id="tool"></div>
-<svg width="960" height="600" style="margin-left: 18%; margin-top: 10%;"></svg>
+<svg width="960" height="600" style="margin-left: 5%; margin-top: 5%;"></svg>
+<mat-card style="width: 25%; margin-top: -18%; float: right; left: -1%;" *ngIf="isClicked">
 
+    <mat-card-title id="clicked-location" style="background:rgba(0,0,0,.06); padding:19px 19px;">
+        <p *ngIf="!userLocationData && !errorMessage"><p [innerHTML]="stateTemp">{{stateTemp}}</p>
+    </mat-card-title>
+    <mat-card-content style="padding:1em;">
+        <img src="https://openweathermap.org/img/wn/{{apiValue.weather[0].icon}}@2x.png">
+        <p style="float: left" [innerHTML]="allTempData">{{allTempData}}</p>
+    </mat-card-content>
+  </mat-card>

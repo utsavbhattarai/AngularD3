@@ -12,6 +12,11 @@ import { SharedService } from '../providers/shared/shared.service';
 export class MapComponent implements OnInit {
   data: any;
   temp:any;
+  state: any;
+  allTempData: any;
+  stateTemp: any;
+  isClicked = false;
+  apiValue: any;
   constructor(public _sharedService: SharedService) { }
 
   ngOnInit() {
@@ -48,14 +53,19 @@ export class MapComponent implements OnInit {
               .on('click', function(d, i) {
                 //debugger;
                 d3.select(this).attr('class', 'tooltip-donut')
-                .style('opacity', 0.1);
+                .style('opacity', 0.1)
+                .style('opactiy', 1.0);
                 //alert(nameState[d.id]);
                 newThis.alertWithWeatherData(nameState[d.id]); //calling api 
-                console.log(nameState[d.id])
+                console.log(nameState[d.id]);
               })
               .on('mouseover', function(d, i) {
                 console.log(d.id);
-                return tooltip.style("visibility", "visible").text(nameState[d.id]);
+                return tooltip.style("visibility", "visible").text(nameState[d.id])
+                .style("color", 'silver')
+                .style('margin-left', '37%')
+                .style('font-size', '50px')
+                .style('margin-top', '3%');
                 //alert(i);
               });
             svg.append('path')
@@ -78,17 +88,18 @@ export class MapComponent implements OnInit {
 
   }
 
-  alertWithWeatherData(state){
+  alertWithWeatherData(state) {
     this._sharedService.getStateWeather(state).subscribe(res => {
-      console.log(res);
-      let message = "State: "+state+"\n"+
-                    "Temperature: "+(this.convertKtoF(res["main"].temp))+" F\n"+
-                    "Max Temperature: "+ (this.convertKtoF(res["main"].temp_max))+" F\n"+
-                    "Min Temperature: "+ (this.convertKtoF(res["main"].temp_min))+" F\n"+
-                    "Sunrise: "+ (this.convertTimeStampToDate(res["sys"].sunrise))+"\n"+
-                    "Sunset: "+ (this.convertTimeStampToDate(res["sys"].sunset))+"\n"
-                    ;
-      window.alert(message);
+      this.apiValue = res;
+      this.isClicked = true;
+      let message = "Temperature: "+(this.convertKtoF(res["main"].temp))+" F\n"+ '<br />' +
+                    "<br />Max Temperature: "+ (this.convertKtoF(res["main"].temp_max))+" F\n <br>"+
+                    "<br />Min Temperature: "+ (this.convertKtoF(res["main"].temp_min))+" F\n <br>"+
+                    "<br />Sunrise: "+ (this.convertTimeStampToDate(res["sys"].sunrise))+"\n <br>"+
+                    "<br />Sunset: "+ (this.convertTimeStampToDate(res["sys"].sunset))+"\n <br>";
+      //window.alert(message);
+      this.stateTemp = "State: "+state+"\n <br>";
+      this.allTempData = message;
     }, error => {
       window.alert('Not found! Please try again later');
     });
