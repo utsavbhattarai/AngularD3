@@ -1,6 +1,10 @@
 <app-circular></app-circular>
 <div id="tool"></div>
-<svg width="960" height="600" style="margin-left: 5%; margin-top: 5%;"></svg>
+<div [@popOverState]="stateName">
+    <svg  id="us-map-states" width="960" height="600" style="margin-left: 5%; margin-top: 5%;">
+    </svg>
+</div>
+
 <mat-card style="width: 25%; margin-top: -18%; float: right; left: -1%;" *ngIf="isClicked">
 
     <mat-card-title id="clicked-location" style="background:rgba(0,0,0,.06); padding:19px 19px;">
@@ -11,3 +15,7 @@
         <p style="float: left" [innerHTML]="allTempData">{{allTempData}}</p>
     </mat-card-content>
   </mat-card>
+
+
+
+  

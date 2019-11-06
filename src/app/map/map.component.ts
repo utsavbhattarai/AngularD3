@@ -3,11 +3,30 @@ import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import { throwError } from 'rxjs';
 import { SharedService } from '../providers/shared/shared.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  styleUrls: ['./map.component.scss'],
+  animations: [
+    trigger('popOverState', [
+      state('show', style({
+        transform: 'scale(0.5) translateX(-50%) translateY(-40%)'
+      })),
+      state('hide',   style({
+        transform: 'scale(1)'
+      })),
+      transition('show => hide', animate('600ms ease-out')),
+      transition('hide => show', animate('1000ms ease-in'))
+    ])
+  ]
 })
 export class MapComponent implements OnInit {
   data: any;
@@ -17,6 +36,7 @@ export class MapComponent implements OnInit {
   stateTemp: any;
   isClicked = false;
   apiValue: any;
+  show =false;
   constructor(public _sharedService: SharedService) { }
 
   ngOnInit() {
@@ -34,7 +54,6 @@ export class MapComponent implements OnInit {
       .style("z-index", "10")
       .style("visibility", "hidden")
       /* .text(nameState); */
-      //test push
       d3.json('https://d3js.org/us-10m.v1.json').then((us) => {
           const data = topojson.feature(us, us.objects.states).features;
           d3.tsv('../../assets/us-state-names.tsv').then((tsv) => {
@@ -57,6 +76,8 @@ export class MapComponent implements OnInit {
                 .style('opacity', 0.1)
                 .style('opactiy', 1.0);
                 //alert(nameState[d.id]);
+                //trigger animation
+                newThis.show = true;
                 newThis.alertWithWeatherData(nameState[d.id]); //calling api 
                 console.log(nameState[d.id]);
               })
@@ -67,7 +88,6 @@ export class MapComponent implements OnInit {
                 .style('margin-left', '37%')
                 .style('font-size', '50px')
                 .style('margin-top', '3%');
-                //alert(i);
               });
             svg.append('path')
               .attr('class', 'state-borders')
@@ -87,6 +107,9 @@ export class MapComponent implements OnInit {
           throwError;
         });
 
+  }
+  get stateName() {
+    return this.show ? 'show' : 'hide';
   }
 
   alertWithWeatherData(state) {
