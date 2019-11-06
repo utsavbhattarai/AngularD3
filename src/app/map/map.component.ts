@@ -34,6 +34,7 @@ export class MapComponent implements OnInit {
       .style("z-index", "10")
       .style("visibility", "hidden")
       /* .text(nameState); */
+      //test push
       d3.json('https://d3js.org/us-10m.v1.json').then((us) => {
           const data = topojson.feature(us, us.objects.states).features;
           d3.tsv('../../assets/us-state-names.tsv').then((tsv) => {
