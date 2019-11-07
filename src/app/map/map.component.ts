@@ -37,10 +37,12 @@ export class MapComponent implements OnInit {
   isClicked = false;
   apiValue: any;
   show =false;
+  stateNameClicked = "NewYork";
+  citiesShow = false;
   constructor(public _sharedService: SharedService) { }
-
   ngOnInit() {
     this.createMap();
+    this.createCities("01");
   }
 
   createMap() {
@@ -78,8 +80,9 @@ export class MapComponent implements OnInit {
                 //alert(nameState[d.id]);
                 //trigger animation
                 newThis.show = true;
-                newThis.alertWithWeatherData(nameState[d.id]); //calling api 
-                console.log(nameState[d.id]);
+                //newThis.stateNameClicked = nameState[d.id];
+                newThis.alertWithWeatherData(nameState[d.id]); //calling api
+                newThis.createCities(2);
               })
               .on('mouseover', function(d, i) {
                 console.log(d.id);
@@ -117,12 +120,12 @@ export class MapComponent implements OnInit {
       this.apiValue = res;
       this.isClicked = true;
       let message = "Temperature: "+(this.convertKtoF(res["main"].temp))+" F\n"+ '<br />' +
-                    "<br />Max Temperature: "+ (this.convertKtoF(res["main"].temp_max))+" F\n <br>"+
-                    "<br />Min Temperature: "+ (this.convertKtoF(res["main"].temp_min))+" F\n <br>"+
-                    "<br />Sunrise: "+ (this.convertTimeStampToDate(res["sys"].sunrise))+"\n <br>"+
-                    "<br />Sunset: "+ (this.convertTimeStampToDate(res["sys"].sunset))+"\n <br>";
+                    "<br />Max Temperature: "+ (this.convertKtoF(res['main'].temp_max))+' F\n <br>'+
+                    '<br />Min Temperature: '+ (this.convertKtoF(res['main'].temp_min))+' F\n <br>'+
+                    '<br />Sunrise: '+ (this.convertTimeStampToDate(res['sys'].sunrise))+'\n <br>'+
+                    '<br />Sunset: '+ (this.convertTimeStampToDate(res['sys'].sunset))+'\n <br>';
       //window.alert(message);
-      this.stateTemp = "State: "+state+"\n <br>";
+      this.stateTemp = 'State: '+state+'\n <br>';
       this.allTempData = message;
     }, error => {
       window.alert('Not found! Please try again later');
@@ -135,6 +138,81 @@ export class MapComponent implements OnInit {
 
   convertTimeStampToDate(timesStamp){
     return new Date(timesStamp*1000).toLocaleTimeString();
+  }
+
+  createCities(id:any) {
+    this.citiesShow = true;
+      var diameter = 300;
+      debugger;
+      var json = {
+         1: {
+          'children': [
+            {'name': 'San Franceso', 'value': 70},
+            {'name': 'Los Angeles', 'value': 44},
+            {'name': 'Kiwis', 'value': 65},
+            {'name': 'Bananas', 'value': 39},
+            {'name': 'Pears', 'value': 10},
+            {'name': 'Satsumas', 'value': 25},
+            {'name': 'Pineapples', 'value': 30}
+          ]
+        },
+        2: {
+          'children': [
+            {'name': 'San Franceso', 'value': 70},
+            {'name': 'Los Angeles', 'value': 44},
+          ]
+        }
+      }
+
+      var colorScale = d3.scaleLinear()
+      .domain([0, d3.max(json[Number(id)].children, function(d) {
+        return d.value;
+      })])
+      .range(['rgb(46, 73, 123)', 'rgb(71, 187, 94)']);
+
+      let bubble = d3.pack()
+        .size([diameter, diameter])
+        .padding(5);
+
+      const margin = {
+        left: 0,
+        right: 100,
+        top: 0,
+        bottom: 0
+      };
+      d3.select('#chart').selectAll('svg').remove();
+      var svg = d3.select('#chart').append('svg')
+        .attr('viewBox','0 0 ' + (diameter + margin.right) + ' ' + diameter)
+        .attr('width', (diameter + margin.right))
+        .attr('height', diameter)
+        .attr('class', 'chart-svg');
+
+      var root = d3.hierarchy(json[Number(id)])
+        .sum(function(d) { return d.value; })
+        .sort(function(a, b) { return b.value - a.value; });
+
+      bubble(root);
+
+      var node = svg.selectAll('.node')
+        .data(root.children)
+        .enter()
+        .append('g').attr('class', 'node')
+        .attr('transform', function(d) { return 'translate(' + d.x + ' ' + d.y + ')'; })
+        .append('g').attr('class', 'graph');
+
+      node.append('circle')
+        .attr('r', function(d) { return d.r; })
+        .style('fill', 'silver');
+
+      node.append('text')
+        .attr('dy', '.3em')
+        .style('text-anchor', 'middle')
+        .text(function(d) { return d.data.name; })
+        .style('fill', '#c11212');
+      node.exit()
+        .transition()
+        .attr('r', 0)
+        .remove();
   }
 
 }

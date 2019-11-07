@@ -13,6 +13,7 @@ export class CircularComponent implements OnInit {
   lon:number;
   userLocationData:any;
   errorMessage:any;
+  
   constructor(public _sharedService: SharedService) { }
 
   ngOnInit() {

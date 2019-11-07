@@ -1,0 +1,13 @@
+{
+    "New York": {
+        "children": [
+            {"name": "New York", "value": 70},
+            {"name": "Buffalo", "value": 44},
+            {"name": "Rochester", "value": 65},
+            {"name": "Syracuse", "value": 39},
+            {"name": "Albany", "value": 10},
+            {"name": "New Rochelle", "value": 25},
+            {"name": "Mount Vernon", "value": 30}
+        ]   
+    }
+}

@@ -14,7 +14,9 @@
         <img src="https://openweathermap.org/img/wn/{{apiValue.weather[0].icon}}@2x.png">
         <p style="float: left" [innerHTML]="allTempData">{{allTempData}}</p>
     </mat-card-content>
-  </mat-card>
+</mat-card>
+
+<div *ngIf="citiesShow" id="chart" class="chart"></div>
 
 
 
