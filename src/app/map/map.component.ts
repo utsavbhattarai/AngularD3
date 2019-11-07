@@ -36,8 +36,8 @@ export class MapComponent implements OnInit {
   stateTemp: any;
   isClicked = false;
   apiValue: any;
-  show =false;
-  stateNameClicked = "NewYork";
+  show = false;
+  displayStateNameOnCardHeader: any;
   citiesShow = false;
   constructor(public _sharedService: SharedService) { }
   ngOnInit() {
@@ -71,23 +71,24 @@ export class MapComponent implements OnInit {
             .selectAll('path')
             .data(data)
             .enter().append('path')
-              .attr('d', path)
+              .attr('d', path).
+              style("stroke", "red")
               .on('click', function(d, i) {
                 //debugger;
                 d3.select(this).attr('class', 'tooltip-donut')
                 .style('opacity', 0.1)
                 .style('opactiy', 1.0);
-                //alert(nameState[d.id]);
                 //trigger animation
                 newThis.show = true;
                 //newThis.stateNameClicked = nameState[d.id];
                 newThis.alertWithWeatherData(nameState[d.id]); //calling api
-                newThis.createCities(2);
+                newThis.createCities(1);
               })
               .on('mouseover', function(d, i) {
                 console.log(d.id);
+                newThis.displayStateNameOnCardHeader = nameState[d.id]
                 return tooltip.style("visibility", "visible").text(nameState[d.id])
-                .style("color", 'silver')
+                .style("hover", 'silver')
                 .style('margin-left', '37%')
                 .style('font-size', '50px')
                 .style('margin-top', '3%');

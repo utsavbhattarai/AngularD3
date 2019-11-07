@@ -9,6 +9,8 @@ import { SharedService } from './providers/shared/shared.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
+import { NbThemeModule, NbLayoutModule, NbCardModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 
 @NgModule({
@@ -23,6 +25,10 @@ import {MatCardModule} from '@angular/material/card';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
+    NbThemeModule.forRoot({ name: 'dark' }),
+    NbLayoutModule,
+    NbEvaIconsModule,
+    NbCardModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

@@ -1,9 +1,21 @@
-<app-circular></app-circular>
-<div id="tool"></div>
-<div [@popOverState]="stateName">
-    <svg  id="us-map-states" width="960" height="600" style="margin-left: 5%; margin-top: 5%;">
-    </svg>
-</div>
+<!-- <app-circular></app-circular> -->
+<nb-card status="success">
+    <nb-card-header>{{displayStateNameOnCardHeader}}</nb-card-header>
+    <nb-card-body>
+            <nb-layout>
+                        <nb-layout-column class="success">
+                            <div [@popOverState]="stateName">
+                                <svg  id="us-map-states" width="960" height="600" style="margin-left: 0%; margin-top: 0%;">
+                                </svg>
+                        </div></nb-layout-column>
+                        <nb-layout-column class="colored-column-danger">
+                                <div *ngIf="citiesShow" id="chart" class="chart"></div>
+                        </nb-layout-column>
+            </nb-layout>
+                
+    </nb-card-body>
+    <nb-card-footer>US MAP</nb-card-footer>
+</nb-card>
 
 <mat-card style="width: 25%; margin-top: -18%; float: right; left: -1%;" *ngIf="isClicked">
 
@@ -15,9 +27,6 @@
         <p style="float: left" [innerHTML]="allTempData">{{allTempData}}</p>
     </mat-card-content>
 </mat-card>
-
-<div *ngIf="citiesShow" id="chart" class="chart"></div>
-
 
 
   
