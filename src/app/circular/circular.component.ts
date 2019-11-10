@@ -17,7 +17,7 @@ export class CircularComponent implements OnInit {
   constructor(public _sharedService: SharedService) { }
 
   ngOnInit() {
-    this.getCurrentUserLocation();
+    //this.getCurrentUserLocation();
   }
 
   getCurrentUserLocation(){
