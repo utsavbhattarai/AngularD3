@@ -139,9 +139,15 @@ export class SharedService {
      ]
    },
    20: {
-     children: [
-       {name: 'Anchorage', value: 70},
-     ]
+    children: [
+      {name: 'Wichita', value: 70},
+      {name: 'Overland Park', value: 70},
+      {name: 'Kansas City', value: 70},
+      {name: 'Olathe', value: 70},
+      {name: 'Lawrence', value: 70},
+      {name: 'Shawnee', value: 70},
+      {name: 'Manhattan', value: 70},
+    ]
    },
    48: {
     children: [
@@ -151,7 +157,43 @@ export class SharedService {
       {name: 'Austin', value: 70},
       {name: 'Fort Worth', value: 70},
     ]
-   }
+   },
+   40: {
+    children: [
+      {name: 'Oklahoma City', value: 70},
+      {name: 'Tulsa', value: 70},
+      {name: 'Norman', value: 70},
+      {name: 'Broken Arrow', value: 70},
+      {name: 'Lawton', value: 70},
+    ]
+   },
+   31: {
+    children: [
+      {name: 'Omaha', value: 70},
+      {name: 'Lincoln', value: 70},
+      {name: 'Bellevue', value: 70},
+      {name: 'Grand Island', value: 70}, 
+    ]
+   },
+   46: {
+    children: [
+      {name: 'Sioux Falls', value: 70},
+      {name: 'Rapid City', value: 70},
+    ]
+   },
+   38: {
+    children: [
+      {name: 'Fargo', value: 70},
+      {name: 'Bismarck', value: 70},
+      {name: 'Grand Forks', value: 70},
+      {name: 'Minot', value: 70}, 
+    ]
+   },
+
+
+  
+
+
 };
   
   constructor(public http: HttpClient) { }
