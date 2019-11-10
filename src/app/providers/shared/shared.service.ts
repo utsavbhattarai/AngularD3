@@ -27,11 +27,7 @@ export class SharedService {
        {'name': 'AubFlorenceurn', 'value': 65},
      ]
    },
-   2: {
-     'children': [
-       {'name': 'Anchorage', 'value': 10},
-     ]
-   },
+ 
    4: {
      'children': [
        {'name': 'Phoenix', 'value': 70},
@@ -113,16 +109,8 @@ export class SharedService {
        {name: 'Anchorage', value: 70},
      ]
    },
-   15: {
-     children: [
-       {name: 'Anchorage', value: 70},
-     ]
-   },
-   16: {
-     children: [
-       {name: 'Anchorage', value: 70},
-     ]
-   },
+   
+ 
    17: {
      children: [
        {name: 'Anchorage', value: 70},
@@ -235,10 +223,111 @@ export class SharedService {
       {name: 'Minot', value: 70}, 
     ]
    },
-
-
-  
-
+      35: {
+        children: [
+          {name: 'Albuquerque', value: 70},
+          {name: 'Las Cruces', value: 70},
+          {name: 'Rio Rancho', value: 70},
+          {name: 'Santa Fe', value: 70}, 
+     {name: 'Roswell', value: 70}, 
+    {name: 'Farmington', value: 70}, 
+        ]
+       },
+       56: {
+          children: [
+            {name: 'Cheyenne', value: 70},
+            {name: 'Casper', value: 70},
+         
+          ]
+         }, 
+      30: {
+            children: [
+              {name: 'Billings', value: 70},
+              {name: 'Missoula', value: 70},
+              {name: 'Great Falls', value: 70},
+              {name: 'Bozeman', value: 70}, 
+            ]
+           },  
+         49: {
+              children: [
+                {name: 'Salt Lake City', value: 110},
+                {name: 'West Valley City', value: 110},
+                {name: 'Provo', value: 70},
+                {name: 'West Jordan', value: 90}, 
+          {name: 'Orem', value: 70},
+                {name: 'Sandy', value: 70},
+                {name: 'Ogden', value: 70},
+                {name: 'St. George', value: 70}, 
+              ]
+             },  
+           16: {
+                children: [
+                  {name: 'Boise City', value: 70},
+                  {name: 'Nampa', value: 70},
+                  {name: 'Meridian', value: 70},
+                  {name: 'Idaho Falls', value: 90}, 
+            {name: 'Pocatello', value: 70},
+                  {name: 'Caldwell', value: 70},
+                  {name: 'Twin Falls', value: 70}, 
+                ]
+               },    
+             32: {
+                  children: [
+                    {name: 'Las Vegas', value: 70},
+                    {name: 'Henderson', value: 70},
+                    {name: ' Reno', value: 70},
+                    {name: 'North Las Vegas', value: 100}, 
+               {name: 'Sparks', value: 70},
+                    {name: 'Carson City', value: 70},
+                  ]
+                 }, 
+                41: {
+                    children: [
+                      {name: 'Portland', value: 70},
+                      {name: 'Eugene', value: 70},
+                      {name: 'Salem', value: 70}, 
+                {name: 'Gresham', value: 70},
+                      {name: 'Hillsboro', value: 70},
+                      {name: 'Beaverton', value: 70}, 
+                {name: 'Bend', value: 70},
+                      {name: 'Medford', value: 70},
+                      {name: 'Springfield', value: 70}, 
+                    ]
+                   },  
+                 53: {
+                      children: [
+                        {name: 'Seattle', value: 70},
+                        {name: 'Spokane', value: 70},
+                        {name: 'Tacoma', value: 70},
+                        {name: 'Vancouver', value: 70}, 
+                    {name: 'Bellevue', value: 70},
+                        {name: 'Kent', value: 70}, 
+                  {name: 'Everett', value: 70},
+                        {name: 'Renton', value: 70},
+                        {name: 'Yakima', value: 70}, 
+                  {name: 'Federal Way', value: 90},
+                        {name: 'Auburn', value: 70},
+                        {name: 'Pasco', value: 70}, 
+                      ]
+                     },  
+                   2: {
+                        children: [
+                          {name: 'Anchorage', value: 70},
+                    {name: 'Juneau', value: 70},
+                    {name: 'Fairbanks', value: 70},
+                    {name: 'Eagle River', value: 70},
+                   
+                       
+                        ]
+                       },    
+                     15: {
+                          children: [
+                            {name: 'Honolulu', value: 70},
+                            {name: 'Pearl City', value: 70},
+                            {name: 'Hilo', value: 70},
+                            {name: 'Waipahu', value: 70}, 
+                          ]
+                         },
 
 };
   
