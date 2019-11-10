@@ -135,7 +135,12 @@ export class SharedService {
    },
    19: {
      children: [
-       {name: 'Anchorage', value: 70},
+       {name: 'Des Moines', value: 70},
+       {name: 'Cedar Rapids', value: 70},
+       {name: 'Davenport', value: 70},
+       {name: 'Sioux City', value: 70},
+       {name: 'Iowa City', value: 70},
+       {name: 'Dubuque', value: 70},
      ]
    },
    20: {
@@ -143,6 +148,41 @@ export class SharedService {
        {name: 'Anchorage', value: 70},
      ]
    },
+   22: {
+    children: [
+      {name: 'New Orleans', value: 70},
+      {name: 'Baton Rouge', value: 70},
+      {name: 'Shreveport', value: 70},
+      {name: 'Lafayette', value: 70},
+      {name: 'Lake Charles', value: 60},
+      {name: 'Hammond', value: 40},
+      {name: 'Monroe', value: 37},
+      {name: 'Alexandria', value:47},
+      {name: 'Kenner', value: 34},
+
+    ]
+  },
+  27: {
+    children: [
+      {name: 'Minneapolis', value: 70},
+      {name: 'St. Paul', value: 70},
+      {name: 'Rochester', value: 70},
+      {name: 'Duluth', value: 70},
+      {name: 'Bloomington', value: 70},
+      {name: 'Brooklyn Park', value: 70},
+      {name: 'St. Cloud', value: 70},
+    ]
+  },
+  29: {
+    children: [
+      {name: 'Kansas City', value: 70},
+      {name: 'St. Louis', value: 70},
+      {name: 'Springfield', value: 70},
+      {name: 'Independence', value: 70},
+      {name: 'Columbia', value: 70},
+      {name: 'Florissant', value: 70},
+    ]
+  },
    48: {
     children: [
       {name: 'Houston', value: 70},
@@ -150,6 +190,12 @@ export class SharedService {
       {name: 'Dallas', value: 70},
       {name: 'Austin', value: 70},
       {name: 'Fort Worth', value: 70},
+      {name: 'El Paso', value: 65},
+      {name: 'Arlington', value: 61},
+      {name: 'Plano', value: 50},
+      {name: 'Irving', value: 30},
+      {name: 'Denton', value: 40},
+      {name: 'Frisco', value: 50},
     ]
    }
 };
