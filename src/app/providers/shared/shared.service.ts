@@ -118,11 +118,7 @@ export class SharedService {
        {name: 'Anchorage', value: 70},
      ]
    },
-   16: {
-     children: [
-       {name: 'Anchorage', value: 70},
-     ]
-   },
+   
    17: {
      children: [
        {name: 'Anchorage', value: 70},
@@ -235,6 +231,85 @@ export class SharedService {
       {name: 'Minot', value: 70}, 
     ]
    },
+   56: {
+    children: [
+   {name: 'Casper', value: 70},
+   {name:'Cheyenne', value: 70},
+   {name:'Jackson', value: 70},
+   {name:'Cody', value: 70},
+   {name:'Laramie', value: 70},
+   {name:'Gillette', value: 70},
+   {name:'Riverton', value: 70},
+  ] 
+ },
+ 35: {
+  children: [
+ {name: 'Albuquerque', value: 80},
+ {name:'Las Cruces', value: 70},
+ {name:'Rio Rancho', value: 70},
+ {name:'Santa Fe', value: 70},
+ {name:'Laramie', value: 70},
+ {name:'Roswell', value: 70},
+ {name:'Farmington', value: 70},
+ {name:'Clovis', value: 70},
+ {name:'Hobbs', value: 70},
+ {name:'Carlsbad', value: 70},
+ {name:'Taos', value: 70},
+ {name:'Ruidoso', value: 70},
+ {name:'Gallup', value: 70},
+] 
+},
+30: {
+  children: [
+ {name: 'Billings', value: 80},
+ {name:'Missoula', value: 70},
+ {name:'Great Falls', value: 70},
+ {name:'Helena', value: 70},
+ {name:'Bozeman', value: 70},
+ {name:'Butte', value: 70},
+ {name:'Whitefish', value: 70},
+ {name:'Big Sky', value: 70},
+ {name:'Livingston', value: 70},
+ {name:'Havre', value: 70},
+] 
+},
+16: {
+  children: [
+    {name: 'Lewiston', value: 70},
+    {name: 'Eagle', value: 70},
+    {name: 'Moscow', value: 70},
+    {name: 'Boise City', value: 70},
+    {name: 'Nampa', value: 70},
+    {name: 'Meridian', value: 70},
+    {name: 'Idaho Falls', value: 70},
+    {name: 'Pocatello', value: 70},
+    {name: 'Caldwell', value: 70},
+    {name: 'Coeur d Alene', value: 90},
+    {name: 'Twin Falls', value: 70}
+  ]
+},
+49: {
+  children: [
+    {name: 'Salt Lake City', value: 90},
+    {name: 'Provo', value: 50},
+    {name: 'West Jordan', value: 80},
+    {name: 'Orem', value: 40},
+    {name: 'Sandy', value: 50},
+    {name: 'Ogden', value: 50},
+    {name: 'St. George', value: 70},
+    {name: 'Layton', value: 50},
+    {name: 'Taylorsville', value: 70},
+    {name: 'South Jordan', value: 70},
+    {name: 'Lehi', value: 40},
+    {name: 'Logan', value: 70},
+    {name: 'Murray', value: 70},
+    {name: 'Draper', value: 50},
+    {name: 'Bountiful', value: 70},
+    {name: 'Roy', value: 40},
+    {name: 'Riverton', value: 60},
+  ]
+},
+  
 
 
   
