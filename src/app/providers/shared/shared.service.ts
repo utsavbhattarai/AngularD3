@@ -27,11 +27,7 @@ export class SharedService {
        {'name': 'AubFlorenceurn', 'value': 65},
      ]
    },
-   2: {
-     'children': [
-       {'name': 'Anchorage', 'value': 10},
-     ]
-   },
+ 
    4: {
      'children': [
        {'name': 'Phoenix', 'value': 70},
