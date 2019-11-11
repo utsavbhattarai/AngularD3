@@ -181,7 +181,10 @@ export class MapComponent implements OnInit {
         .enter()
         .append('g').attr('class', 'node')
         .attr('transform', function(d) { return 'translate(' + d.x + ' ' + d.y + ')'; })
-        .append('g').attr('class', 'graph');
+        .append('g').attr('class', 'graph')
+        .on('click', function(d, i) {
+          debugger;
+        });
 
     node.append('circle')
         .attr('r', function(d) { return d.r; })
