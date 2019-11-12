@@ -8,7 +8,7 @@
                                 <svg  id="us-map-states" width="960" height="600" style="margin-left: 0%; margin-top: 0%;">
                                 </svg>                                
                             </div>  
-                            <app-pie></app-pie>                        
+                            <app-pie [fiveDaysWeatherForecast]="fiveDaysWeatherForecast" *ngIf="showGraph"></app-pie>                        
                         </nb-layout-column>
                         <nb-layout-column class="colored-column-danger">
                                 <div *ngIf="citiesShow" id="chart" class="chart"></div>
