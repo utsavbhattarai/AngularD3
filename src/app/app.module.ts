@@ -11,13 +11,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import { NbThemeModule, NbLayoutModule, NbCardModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { ForecastGraphComponent } from './forecast-graph/forecast-graph.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { PieComponent } from './pie/pie.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
-    CircularComponent
+    CircularComponent,
+    ForecastGraphComponent,
+    PieComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,10 +30,11 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
-    NbThemeModule.forRoot({ name: 'dark' }),
+    NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
     NbEvaIconsModule,
-    NbCardModule
+    NbCardModule,
+    NgxChartsModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

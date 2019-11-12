@@ -6,10 +6,13 @@
                         <nb-layout-column class="success">
                             <div [@popOverState]="stateName">
                                 <svg  id="us-map-states" width="960" height="600" style="margin-left: 0%; margin-top: 0%;">
-                                </svg>
-                        </div></nb-layout-column>
+                                </svg>                                
+                            </div>  
+                            <app-pie></app-pie>                        
+                        </nb-layout-column>
                         <nb-layout-column class="colored-column-danger">
                                 <div *ngIf="citiesShow" id="chart" class="chart"></div>
+                                <app-forecast-graph [fiveDaysWeatherForecast]="fiveDaysWeatherForecast" *ngIf="showGraph"></app-forecast-graph>                               
                         </nb-layout-column>
             </nb-layout>
                 

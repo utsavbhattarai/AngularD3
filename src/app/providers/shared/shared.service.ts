@@ -305,27 +305,26 @@ export class SharedService {
     {name: 'Riverton', value: 60},
   ]
 },
-  
-
-
-  
-
 
 };
-  
   constructor(public http: HttpClient) { }
 
-  getUserWeather(lat,lon){
+  getUserWeather(lat,lon) {
     return this.http.get('https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&mode=json&appid='+this.apiKey);
   }
 
-  getStateWeather(state){
+  getStateWeather(state) {
     return this.http.get('https://api.openweathermap.org/data/2.5/weather?q='+state+'&mode=json&appid='+this.apiKey);
   }
 
-  getJson(){
+  getJson() {
     return this.json;
   }
+  getFiveDaysForecastData(cityName: any) {
+    return this.http.get('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + ',us&mode=json&appid=' + this.apiKey);
+  }
+
+
 
 
 }

@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { SharedService } from './../providers/shared/shared.service';
+import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import { throwError } from 'rxjs';
-import { SharedService } from '../providers/shared/shared.service';
 import {
   trigger,
   state,
@@ -25,7 +25,7 @@ import {
       })),
       transition('show => hide', animate('600ms ease-out')),
       transition('hide => show', animate('1000ms ease-in'))
-    ])
+    ]),
   ]
 })
 export class MapComponent implements OnInit {
@@ -39,6 +39,8 @@ export class MapComponent implements OnInit {
   show = false;
   displayStateNameOnCardHeader: any;
   citiesShow = false;
+  showGraph = false;
+  fiveDaysWeatherForecast: any;
   constructor(public _sharedService: SharedService) { }
   ngOnInit() {
     this.createMap();
@@ -74,7 +76,6 @@ export class MapComponent implements OnInit {
               .attr('d', path).
               style("stroke", "red")
               .on('click', function(d, i) {
-                //debugger;
                 d3.select(this).attr('class', 'tooltip-donut')
                 .style('opacity', 0.1)
                 .style('opactiy', 1.0);
@@ -142,9 +143,9 @@ export class MapComponent implements OnInit {
   }
 
   createCities(id:any) {
+    var self = this;
     this.citiesShow = true;
     let diameter = 400;
-      debugger;
     let json = this._sharedService.getJson();
 
     let colorScale = d3.scaleLinear()
@@ -183,7 +184,11 @@ export class MapComponent implements OnInit {
         .attr('transform', function(d) { return 'translate(' + d.x + ' ' + d.y + ')'; })
         .append('g').attr('class', 'graph')
         .on('click', function(d, i) {
-          debugger;
+          self.showGraph = false;
+          self._sharedService.getFiveDaysForecastData(d.data.name).subscribe(res => {
+            self.fiveDaysWeatherForecast = res;
+            self.showGraph = true;
+          });
         });
 
     node.append('circle')
