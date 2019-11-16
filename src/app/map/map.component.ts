@@ -41,6 +41,8 @@ export class MapComponent implements OnInit {
   citiesShow = false;
   showGraph = false;
   fiveDaysWeatherForecast: any;
+  showCurrentWeather:boolean = true;
+  tempBoolean:boolean = false;
   constructor(public _sharedService: SharedService) { }
   ngOnInit() {
     this.createMap();
@@ -143,6 +145,10 @@ export class MapComponent implements OnInit {
   }
 
   createCities(id:any) {
+    if(this.tempBoolean){
+      this.showCurrentWeather = false;
+    }
+    this.tempBoolean = true;
     var self = this;
     this.citiesShow = true;
     let diameter = 400;
