@@ -199,13 +199,13 @@ export class MapComponent implements OnInit {
 
     node.append('circle')
         .attr('r', function(d) { return d.r; })
-        .style('fill', '#0082a554');
+        .style('fill', '#966c01d1');
 
     node.append('text')
         .attr('dy', '.3em')
         .style('text-anchor', 'middle')
         .text(function(d) { return d.data.name; })
-        .style('fill', '#ff8484d9');
+        .style('fill', '#00000');
     node.exit()
         .transition()
         .attr('r', 0)
